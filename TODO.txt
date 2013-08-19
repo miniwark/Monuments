@@ -7,3 +7,5 @@ TODO
 * find & test a wikimedia api module
 * add testing library & build tools (volo ?)
 * remove unecessary building blocks (like unused icons)
+* cache recent datas and images
+* get image miniatures instead of full images
