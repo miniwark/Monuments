@@ -20,6 +20,12 @@ Third party libraries
 * [RequireJS][6] javascript module loader
 
 
+Monument database
+=================
+
+Monuments datas come from the [Monuments database][7] located at http://toolserver.org/~erfgoed/api/api.php
+
+
 Licence
 =======
 Monuments is provided under the Expat licence (aka MIT licence). See the LICENSE.txt file for details.
@@ -31,3 +37,5 @@ Monuments is provided under the Expat licence (aka MIT licence). See the LICENSE
 [4]: https://github.com/fabi1cazenave/webL10n
 [5]: http://handlebarsjs.com/
 [6]: http://requirejs.org/
+[7]: https://commons.wikimedia.org/wiki/Commons:Monuments_database
+[8]: http://toolserver.org/~erfgoed/api/api.php
