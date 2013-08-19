@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Monuments</title>
+
+  <!-- styles -->
+  <link rel="stylesheet" type="text/css" href="style/bb/headers.css"/>
+  <link rel="stylesheet" type="text/css" href="style/bb/lists.css"/>
+  <link rel="stylesheet" type="text/css" href="style/bb/action_icons.css">
+
+  <link rel="stylesheet" type="text/css" href="style/bb/transitions.css"/>
+  <link rel="stylesheet" type="text/css" href="style/monuments.css"/>
+
+  <!-- Localization -->
+  <script defer type="text/javascript" src="js/lib/l10n.js"></script>
+  <link rel="prefetch" type="application/l10n" href="locales/locales.ini"/>
+  <!-- TODO use requirejs for js libraries -->
+
+</head>
+<body role="application">
+
+  <!-- Main view --> <!-- TODO move list somewhere else ? -->
+  <section role="region" id="root">
+    <header>
+      <menu type="toolbar">
+        <a href="#settings"><span class="icon action-icon settings">settings</span></a>
+      </menu>
+      <!-- TODO <img src="images/logo32.png"> -->
+      <h1 data-l10n-id="monuments"> Monuments </h1>
+    </header>
+    <!-- TODO subheader with position or city -->
+    <!-- XXX only nearest monuments for now -->
+    <article data-type="list">
+      <!--<header>Test1</header>-->
+      <ul>
+        <li>
+          <a href="#settings">
+            <aside class="pack-end">
+              <img src="images/Chenonceau.jpg">
+            </aside>
+            <p>Monument Name</p>
+            <p>Monument address</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <aside class="pack-end">
+              <img src="images/Chenonceau.jpg">
+            </aside>
+            <p>Monument Name</p>
+            <p>Monument address</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <aside class="pack-end">
+              <img src="images/Chenonceau.jpg">
+            </aside>
+            <p>Monument Name</p>
+            <p>Monument address</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <aside class="pack-end">
+              <img src="images/Chenonceau.jpg">
+            </aside>
+            <p>Monument Name</p>
+            <p>Monument address</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <aside class="pack-end">
+              <img src="images/Chenonceau.jpg">
+            </aside>
+            <p>Monument Name</p>
+            <p>Monument address</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <aside class="pack-end">
+              <img src="images/Chenonceau.jpg">
+            </aside>
+            <p>Monument Name</p>
+            <p>Monument address</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <aside class="pack-end">
+              <img src="images/Chenonceau.jpg">
+            </aside>
+            <p>Monument Name</p>
+            <p>Monument address</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <aside class="pack-end">
+              <img src="images/Chenonceau.jpg">
+            </aside>
+            <p>Monument Name</p>
+            <p>Monument address</p>
+          </a>
+        </li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Settings panel -->
+  <section role="region" id="settings" class="skin-organic">
+    <header>
+      <a id="btn-headers-back" href="#root"><span class="icon icon-back">back</span></a>
+      <h1 data-l10n-id="settings"> Settings </h1>
+    </header>
+    <article>
+      <p>settings panel</p>
+    </article>
+  </section>
+
+</body>
+</html>
