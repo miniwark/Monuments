@@ -20,15 +20,6 @@ Third party libraries
 * [RequireJS][5] javascript module loader
 
 
-TODO
-====
-* finish main panel
-* finish settings panel
-* add/use geopositioning API
-* add choice betwing geolocalisation and by city browse
-* find & test a wikimedia api module
-* add testing library & build tools (volo ?)
-
 Licence
 =======
 Monuments is provided under the Expat licence (aka MIT licence). See the LICENSE.txt file for details.
