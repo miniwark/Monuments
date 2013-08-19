@@ -15,9 +15,9 @@ Third party libraries
 =====================
 
 * [FirefoxOS][3] building blocks
-* [WebL10n][4] javascript localization engine
-* [Handlebars][5] javascript templates engine
-* [RequireJS][6] javascript module loader
+* [WebL10n][4] javascript localization library
+* [Handlebars][5] javascript templates library
+* [RequireJS][6] javascript module loader library
 
 
 Monument database
