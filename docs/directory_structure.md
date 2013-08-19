@@ -16,7 +16,7 @@ with a few additions because of Handlebars templates and RequireJS usage.
         bb/             -- FirefoxOS building blocks
         icons/          -- icons for the application
           60/           -- 60px icon
-          Monuments.png -- 120px icon
+          Monuments.png -- 128px icon
         images/         -- additional UI images
         monuments.css   -- main css template
       templates/        -- Handlebars templates

@@ -6,3 +6,4 @@ TODO
 * add choice between geolocalisation and by city browse
 * find & test a wikimedia api module
 * add testing library & build tools (volo ?)
+* remove unecessary building blocks (like unused icons)
