@@ -1,0 +1,21 @@
+{
+ "version": "0.0.1",
+  "name": "Monuments",
+  "description": "Wiki Loves Monuments",
+  "launch_path": "index.html",
+  "icons": {
+    "60": "/style/icons/60/Monuments.png",
+    "128": "/style/icons/Monuments.png"
+  },
+  "developer": {
+    "name": "miniwark",
+    "url": "http://www.wikilovesmonuments.org/"
+  },
+  "installs_allowed_from": ["*"],
+  "default_locale": "en-US",
+  "permissions": {
+    "geolocation": {
+      "description": "Location required for nearby monuments"
+    }
+  }
+}
