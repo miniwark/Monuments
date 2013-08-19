@@ -1,3 +1,11 @@
 {{#each monuments}}
-  <li> {{name}} {{address}} {{image}} </li>
+  <li>
+    <a href="#settings">
+      <aside class="pack-end">
+        <img src="{{image}}">
+      </aside>
+      <p>{{name}}</p>
+      <p>{{address}}</p>
+    </a>
+  </li>
 {{/each}}
