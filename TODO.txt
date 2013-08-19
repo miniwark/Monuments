@@ -1,0 +1,8 @@
+TODO
+====
+* finish main panel
+* finish settings panel
+* add/use geopositioning API
+* add choice between geolocalisation and by city browse
+* find & test a wikimedia api module
+* add testing library & build tools (volo ?)
