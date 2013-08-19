@@ -1,3 +1,10 @@
+/* import building blocks styles */
+@import "bb/headers.css";
+@import "bb/lists.css";
+@import "bb/action_icons.css";
+@import "bb/transitions.css";
+
+
 /* main styles for the app */
 
 html, body {
