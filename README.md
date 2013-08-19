@@ -8,16 +8,16 @@ This application is targeted to the curious and tourists.
 
 
 This application share some features with the official [Wiki Love Monuments mobile application][1]
-but without the editing and upload features.
+but without the editing and upload features. See also the [123poi App][2] for a similar product.
 
 
 Third party libraries
 =====================
 
-* [FirefoxOS][2] building blocks
-* [WebL10n][3] javascript localization engine
-* [Handlebars][4] javascript templates engine
-* [RequireJS][5] javascript module loader
+* [FirefoxOS][3] building blocks
+* [WebL10n][4] javascript localization engine
+* [Handlebars][5] javascript templates engine
+* [RequireJS][6] javascript module loader
 
 
 Licence
@@ -26,7 +26,8 @@ Monuments is provided under the Expat licence (aka MIT licence). See the LICENSE
 
 
 [1]: http://www.mediawiki.org/wiki/Wiki_Loves_Monuments_mobile_application
-[2]: http://buildingfirefoxos.com/
-[3]: https://github.com/fabi1cazenave/webL10n
-[4]: http://handlebarsjs.com/
-[5]: http://requirejs.org/
+[2]: http://www.123poi.com/de/seite/Wiki-Loves-Monuments-2012-App-for-Android-and-iOS/108/
+[3]: http://buildingfirefoxos.com/
+[4]: https://github.com/fabi1cazenave/webL10n
+[5]: http://handlebarsjs.com/
+[6]: http://requirejs.org/
