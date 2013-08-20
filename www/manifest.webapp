@@ -11,11 +11,21 @@
     "name": "miniwark",
     "url": "http://www.wikilovesmonuments.org/"
   },
-  "installs_allowed_from": ["*"],
-  "default_locale": "en-US",
+  "default_locale": "en-US", 
+  "locales": {
+    "fr": {
+      "name": "Monuments",
+      "description": "Wiki Loves Monuments",
+      "developer": {
+      "name": "miniwark",
+        "url": "http://www.wikilovesmonuments.fr/"
+      }
+    }
+  },
+  "installs_allowed_from": ["*"],  
   "permissions": {
     "geolocation": {
-      "description": "Location required for nearby monuments"
+      "description": "Used to locate nearby monuments"
     }
   }
 }
