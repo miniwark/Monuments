@@ -3,16 +3,14 @@
 <head>
   <meta charset="utf-8">
   <title>Monuments</title>
-
-  <!-- stylesheet -->
+  <!-- main stylesheet -->
   <link rel="stylesheet" type="text/css" href="style/monuments.css"/>
-
-  <!-- Localization -->
-  <script defer type="text/javascript" src="js/lib/l10n.js"></script>
+  <!-- localization init -->
   <link rel="prefetch" type="application/l10n" href="locales/locales.ini"/>
-  <!-- TODO use requirejs for js libraries -->
-
+  <!-- load js libraries with requirejs-->
+  <script defer type="text/javascript" data-main="js/monuments" src="js/lib/require.js"></script>
 </head>
+
 <body role="application">
 
   <!-- Main view --> <!-- TODO move list somewhere else ? -->
