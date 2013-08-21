@@ -13,7 +13,7 @@ define(function () {
         timeout           : 27000
     };
 
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback, geo_options});
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback, geo_options);
 
     
     function successCallback(position) {
