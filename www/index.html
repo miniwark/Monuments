@@ -8,7 +8,11 @@
   <!-- localization init -->
   <link rel="prefetch" type="application/l10n" href="locales/locales.ini"/>
   <!-- load js libraries with requirejs-->
-  <script defer type="text/javascript" data-main="js/monuments" src="js/lib/require.js"></script>
+  <!--<script defer type="text/javascript" data-main="js/monuments" src="js/lib/require.js"></script>-->
+
+  <script type="text/javascript" src="js/lib/handlebars.js"></script>
+
+
 </head>
 
 <body role="application">
@@ -19,77 +23,51 @@
       <menu type="toolbar">
         <a href="#settings"><span class="icon action-icon settings">settings</span></a>
       </menu>
-      <!-- TODO <img src="images/logo32.png"> -->
       <h1 data-l10n-id="monuments"> Monuments </h1>
     </header>
     <!-- TODO subheader with position or city -->
     <!-- XXX only nearest monuments for now -->
     <article data-type="list">
-      <!--<header>Test1</header>-->
       <ul>
-        <li>
-          <a href="#settings">
-            <aside class="pack-end">
-              <img src="images/Chenonceau.jpg">
-            </aside>
-            <p>Monument Name</p>
-            <p>Monument address</p>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <aside class="pack-end">
-              <img src="images/Chenonceau.jpg">
-            </aside>
-            <p>Monument Name</p>
-            <p>Monument address</p>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <aside class="pack-end">
-              <img src="images/Chenonceau.jpg">
-            </aside>
-            <p>Monument Name</p>
-            <p>Monument address</p>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <aside class="pack-end">
-              <img src="images/Chenonceau.jpg">
-            </aside>
-            <p>Monument Name</p>
-            <p>Monument address</p>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <aside class="pack-end">
-              <img src="images/Chenonceau.jpg">
-            </aside>
-            <p>Monument Name</p>
-            <p>Monument address</p>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <aside class="pack-end">
-              <img src="images/Chenonceau.jpg">
-            </aside>
-            <p>Monument Name</p>
-            <p>Monument address</p>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <aside class="pack-end">
-              <img src="images/Chenonceau.jpg">
-            </aside>
-            <p>Monument Name</p>
-            <p>Monument address</p>
-          </a>
-        </li>
+		  
+		  
+<!-- begin test -->		  
+		  
+    <div id="placeholder">This will get replaced by handlebars.js</div>
+    <script id="myTemplate" type="text/x-handlebars-template">
+        {{#monuments}}
+            <li>
+              <a href="https://fr.wikipedia.org/wiki/{{monument_article}}">
+                <aside class="pack-end">
+                  <img src={{image}}>
+                 </aside>
+                <p>{{name}}</p>
+                <p>{{address}}</p>
+              </a>
+            </li>
+        {{/monuments}}
+    </script>
+		
+    <script type="text/javascript">
+        var source = document.getElementById("myTemplate").innerHTML;
+        var template = Handlebars.compile(source);
+        var data = {
+            monuments: [
+            {"name": "Monument Name 01", "address": "1 rue machin", "image": "", "monument_article": "Château_de_Versailles"},
+            {"name": "Monument Name 02", "address": "2 rue machin", "image": "", "monument_article": ""},
+            {"name": "Monument Name 03", "address": "3 rue machin", "image": "", "monument_article": ""},
+            {"name": "Monument Name 03", "address": "4 rue machin", "image": "", "monument_article": ""},
+            {"name": "Monument Name 03", "address": "5 rue machin", "image": "", "monument_article": ""},
+            {"name": "Monument Name 03", "address": "6 rue machin", "image": "", "monument_article": ""},
+            {"name": "Monument Name 03", "address": "7 rue machin", "image": "", "monument_article": ""}
+            ]
+        };
+        document.getElementById("placeholder").innerHTML = template(data);
+    </script>
+		
+<!-- end test -->		
+		
+
         <li>
           <a href="#">
             <aside class="pack-end">
