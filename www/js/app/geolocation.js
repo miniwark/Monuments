@@ -4,30 +4,62 @@
 // and https://developer.mozilla.org/en-US/docs/WebAPI/Using_geolocation
 
 
-define(function () {
-    //private
+//define([], function() {
+//
+//    var geo_options = {
+//        enableHighAccuracy: false, 
+//        maximumAge        : 300000,
+//        timeout           : 27000
+//    };
+//
+//    navigator.geolocation.getCurrentPosition(successCallback, errorCallback, geo_options);
+//
+//    
+//    function successCallback(position) {
+//      // By using the 'maximumAge' option above, the position
+//      // object is guaranteed to be at most 10 minutes old.
+//    }
+//
+//    function errorCallback(error) {
+//      // Update a div element with error.message.
+//    }
+//
+//    //public
+//    return {
+//        latitude: "black",
+//        longitude: "unisize"
+//    }
+//});
 
-    var geo_options = {
+define(function() {
+
+    var _latitude = null;
+    var _longitude = null;
+    //manage error
+
+    var _options = {
         enableHighAccuracy: false, 
         maximumAge        : 300000,
         timeout           : 27000
     };
 
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback, geo_options);
-
-    
-    function successCallback(position) {
-      // By using the 'maximumAge' option above, the position
-      // object is guaranteed to be at most 10 minutes old.
+    function _successCallback(position) {
+		_latitude = position.coords.latitude;
+        _longitude = position.coords.longitude;
     }
 
-    function errorCallback(error) {
+    function _errorCallback(error) {
       // Update a div element with error.message.
     }
+    
+    navigator.geolocation.getCurrentPosition(
+        _successCallback,
+        _errorCallback,
+        _options
+    );
 
-    //public
     return {
-        latitude: "black",
-        longitude: "unisize"
-    }
+		latitude: _latitude,
+		longitude: _longitude
+	}
 });
