@@ -22,10 +22,13 @@
       }
     }
   },
-  "installs_allowed_from": ["*"],  
+  "installs_allowed_from": ["*"],
   "permissions": {
     "geolocation": {
       "description": "Used to locate nearby monuments"
+    },
+    "storage": {
+      "description": "Used for settings and caching"
     }
   }
 }

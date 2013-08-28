@@ -2,6 +2,7 @@
 // configure and load javascripts requirements with RequireJS
 // import external libraries and the main script
 
+'use strict';
 
 require.config({
     baseUrl: 'js/lib',
@@ -17,13 +18,8 @@ require.config({
 require([
     'app/main',
     'handlebars', 
-    'l10n', 
-//    'app/geolocation'
+    'l10n'
 ],
 function() {
-	
-//	var latitude = Geolocation.latitude;
-//	console.log("fin"+latitude)
+	//
 });
-
-// we follow the Revealing Module Pattern for app modules

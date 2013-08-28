@@ -1,14 +1,15 @@
 
 // compile and add handlebars templates
 
+'use strict';
 
 define([
 	'text!templates/monuments.hbs'
-], function(template_monuments) {
+], function(monuments_template) {
 	
 
 	// TODO replace by real datas
-    monuments_data = {
+    var monuments_data = {
             monuments: [
             {"name": "Monument Name 01", "address": "1 rue machin", "image": "", "monument_article": "Château_de_Versailles"},
             {"name": "Monument Name 02", "address": "2 rue machin", "image": "", "monument_article": ""},
@@ -21,9 +22,9 @@ define([
         };
 	
 	// compile templates
-	compiledTemplateMonuments = Handlebars.compile(template_monuments);
+	var compiledMonumentsTemplate = Handlebars.compile(monuments_template);
 	
 	// add generated HTML to the documents
-    document.getElementById("monument-list-template").innerHTML = compiledTemplateMonuments(monuments_data);
+    document.getElementById("monument-list-template").innerHTML = compiledMonumentsTemplate(monuments_data);
 	
 });
