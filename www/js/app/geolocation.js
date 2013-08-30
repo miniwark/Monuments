@@ -1,98 +1,44 @@
 
-// use the geolocation API to retrieve actual coordinates
-// see http://dev.w3.org/geo/api/spec-source.html
-// and https://developer.mozilla.org/en-US/docs/WebAPI/Using_geolocation
+// use the HTML5 geolocation API to retrieve actual coordinates
+// every 5 minutes and save them in the sessionStorage
+//
+// We use setTimeout instead of geolocation.WatchPosition to avoid unecessary battery usage
+// We use sessionStorage instead of localStrorage for better privacy
 
 'use strict';
 
 define([], function() {
 	
-	// options for the geolocation API
 	var geo_options = {
+		// options for the geolocation API
 		enableHighAccuracy: false,
-		maximumAge        : 60000,
-		timeout           : 50000
+		maximumAge        : 300000,
+		timeout           : 30000
 	};
-	
-    function successCallback(position) {  
-        //save latitude, longitude and timestamp in the sessionStorage
-        
+   	
+    function savePosition(position) {
+		//save latitude and longitude in the sessionStorage
         window.sessionStorage.setItem('position_latitude', position.coords.latitude);
         window.sessionStorage.setItem('position_longitude', position.coords.longitude);
-        window.sessionStorage.setItem('position_timestamp', position.timestamp);
-        
-       // console.log(window.sessionStorage['position_timestamp']);
-        console.log(position.timestamp);
-        
     }
 
-    function errorCallback(error) {
+    function errorHandler(error) {
         // TODO manage error messages
         console.log(error.code);
     }
 
-	// check the geolocation every 5 minutes (maximumAge: 300000)
-	navigator.geolocation.watchPosition(successCallback, errorCallback, geo_options);
+	// check the geolocation every 5 minutes
+	// we use a javascript timer insdead of geolocation.WatchPosition
+	// to avoid unecessary battery usage
+	
+	function geolocation() {
+		// check the geolocation a first time and then every 5 minutes
+		navigator.geolocation.getCurrentPosition(savePosition, errorHandler, geo_options);
+		setTimeout(geolocation, 300000);
+	}
+	// start the geolocation cycle
+	geolocation();
+	
+	// TODO move the cycling on main.js
 
 });
-
-
-//define([], function() {
-//
-//    var geo_options = {
-//        enableHighAccuracy: false, 
-//        maximumAge        : 300000,
-//        timeout           : 27000
-//    };
-//
-//    navigator.geolocation.getCurrentPosition(successCallback, errorCallback, geo_options);
-//
-//    
-//    function successCallback(position) {
-//      // By using the 'maximumAge' option above, the position
-//      // object is guaranteed to be at most 10 minutes old.
-//    }
-//
-//    function errorCallback(error) {
-//      // Update a div element with error.message.
-//    }
-//
-//    //public
-//    return {
-//        latitude: "black",
-//        longitude: "unisize"
-//    }
-//});
-
-//define(function() {
-
-    //var _latitude = null;
-    //var _longitude = null;
-    ////manage error
-
-    //var _options = {
-        //enableHighAccuracy: false, 
-        //maximumAge        : 300000,
-        //timeout           : 27000
-    //};
-
-    //function _successCallback(position) {
-		//_latitude = position.coords.latitude;
-        //_longitude = position.coords.longitude;
-    //}
-
-    //function _errorCallback(error) {
-      //// Update a div element with error.message.
-    //}
-    
-    //navigator.geolocation.getCurrentPosition(
-        //_successCallback,
-        //_errorCallback,
-        //_options
-    //);
-
-    //return {
-		//latitude: _latitude,
-		//longitude: _longitude
-	//}
-//});
