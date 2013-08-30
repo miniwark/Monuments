@@ -13,4 +13,5 @@ Coding conventions
 
 TODO
 
-Try to convert the internal libraries to the "Revealing Module Pattern"
+- Try to convert the internal libraries to the "Revealing Module Pattern"
+- Use Zepto.js with getJSONP for lookups if we add this library to the app
