@@ -4,11 +4,11 @@
 'use strict';
 
 define([
-	'text!templates/monuments.hbs'
-], function(monuments_template) {
+	'text!templates/monuments_list.hbs'
+], function(monuments_list_template) {
 	
 
-	// TODO replace by real datas
+	// TODO replace by real datas and rename to monuments_list
     var monuments_data = {
             monuments: [
             {"name": "Monument Name 01", "address": "1 rue machin", "image": "", "monument_article": "Château_de_Versailles"},
@@ -21,10 +21,12 @@ define([
             ]
         };
 	
+
+	
 	// compile templates
-	var compiledMonumentsTemplate = Handlebars.compile(monuments_template);
+	var compiledMonumentsListTemplate = Handlebars.compile(monuments_list_template);
 	
 	// add generated HTML to the documents
-    document.getElementById("monument-list-template").innerHTML = compiledMonumentsTemplate(monuments_data);
+    document.getElementById("monument-list-template").innerHTML = compiledMonumentsListTemplate(monuments_data);
 	
 });
