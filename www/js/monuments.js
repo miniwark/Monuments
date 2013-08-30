@@ -11,14 +11,16 @@ require.config({
         'templates': '../../templates'
     },
     shim: {
-		handblebars: { exports: 'Handlebars'}
+		handblebars: { exports: 'Handlebars'},
+		zepto: { exports: '$' }
 	}
 });
 
 require([
     'app/main',
     'handlebars', 
-    'l10n'
+    'l10n',
+    'zepto'
 ],
 function() {
 	//
