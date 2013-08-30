@@ -13,7 +13,9 @@
 
 <body role="application">
 
-  <!-- Main view --> <!-- TODO move list somewhere else ? -->
+  <!-- Main view -->
+  <!-- TODO move list somewhere else ? -->
+  <!-- XXX only nearest monuments for now -->
   <section role="region" id="root">
     <header>
       <menu type="toolbar">
@@ -22,11 +24,8 @@
       <h1 data-l10n-id="monuments"> Monuments </h1>
     </header>
     <!-- TODO subheader with position or city -->
-    <!-- XXX only nearest monuments for now -->
     <article data-type="list">
-      <ul>
-	    <div id="monument-list-template">This placeholder get replaced by monuments.hbs template</div> 
-      </ul> 
+	  <div id="monument-list-template">This placeholder get replaced by monuments_list.hbs template</div>
     </article>
   </section>
 
@@ -38,6 +37,7 @@
     </header>
     <article>
       <p>settings panel</p>
+      <div id="settings-panel-template">This placeholder get replaced by settings.hbs template</div>
     </article>
   </section>
 
