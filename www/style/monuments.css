@@ -47,7 +47,7 @@ section[role="region"] > article[data-type="list"]{
 
 /* Panels positions & transitions */
 
- #root {
+#root {
   transform: translate(0, 0);
 }
 
