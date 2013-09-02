@@ -4,6 +4,7 @@ TODO
 For v 0.1
 ---------
 - Display images
+- Get image miniatures instead of full images
 - Clean the wiki formating garbage
 
 For v 0.2
@@ -13,19 +14,22 @@ For v 0.2
 - Edit the coding_convention according to above
 - Move timers and events trigers in app.js (in particular the 5 minutes geolocation cycle)
 - Manage geolocation error messages
+- Finish the settings panel
 - Add settings for radius and list limit
+- Remove unecessary building blocks (like unused icons)
 
 
-For 0.3 and above
------------------
+For 0.3
+-------
 - Add light wikipedia display by using wikipedia.js instead of default display
 - Add a back button and/or gesture wile browsing
 
 
-For 0.4
--------
+For 0.4 and above
+-----------------
 - Add manual search by contry > administrative > city
 - Add a map from openstreetmap with leaflet.js
+- Cache images
 
 
 Maybe
