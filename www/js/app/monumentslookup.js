@@ -11,35 +11,32 @@
  
 
 define([], function() {
-	
+
+	// generate the lookup address
 	var baseURL = 'http://toolserver.org/~erfgoed/api/api.php?';
-	
 	var params = $.param({
 		format: 'json',
 		action: 'search',
-		srcontry: 'fr',  //TODO get this from coodinate
-		srlang: 'fr',    //TODO get this from the phone
-		coord: window.sessionStorage.getItem('position_latitude') + ',' + window.sessionStorage.getItem('position_longitude'),
-		radius: '5000',  //TODO add a setting for this
+		srcontry: window.localStorage.getItem('position_country'),
+		srlang: navigator.language,
+		coord: window.localStorage.getItem('position_latitude') + ',' + window.localStorage.getItem('position_longitude'),
+		radius: '1000',  //TODO add a setting for this
+		//limit: 10, //TODO maybe add a limit in settings
 		props: 'name|address|municipality|image'
 	});
-	
 	var requestURL = baseURL + params + '&callback=?'
-    
-	$.getJSON(requestURL, function(monumentsData){
-		var data = JSON.stringify(monumentsData);
-		console.log(data)
+	
+    // get the JSONP data from the external source
+	$.getJSON(requestURL, function(jsonData){
+		var monuments_list = JSON.stringify(jsonData);
 		// TODO clean wiki formating like [[city]]
-		// TODO sage to localstorage
+		// or use address from nominatim ?
+		
+		// save the monument list in the localStorage
+		window.localStorage.setItem('monuments_list', monuments_list);
 	})
 
 });
 
-// example centered in Nice with a 5000m radius with the more usefull fields
+// example centered in Nice with a 5000m radius with the most usefull fields
 // http://toolserver.org/~erfgoed/api/api.php?&format=json&action=search&srcountry=fr&srlang=fr&coord=43.69073,7.294788&radius=5000&props=name|address|municipality|image
-
-
-// TODO clean the [[]] from the wiki syntax in the restults ...
-// TODO maybe drop adresslookup ? we can work with long lat and radius
-// or just use it for country lookup
-// anyway this maybe usefull later for manual monument search
