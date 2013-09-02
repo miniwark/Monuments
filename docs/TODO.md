@@ -5,7 +5,6 @@ For v 0.1
 ---------
 - Display images
 - Get image miniatures instead of full images
-- Clean the wiki formating garbage
 
 For v 0.2
 ---------
