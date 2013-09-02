@@ -3,7 +3,6 @@
 // every 5 minutes and save them in the sessionStorage
 //
 // We use setTimeout instead of geolocation.WatchPosition to avoid unecessary battery usage
-// We use sessionStorage instead of localStrorage for better privacy
 
 'use strict';
 
@@ -17,9 +16,9 @@ define([], function() {
 	};
    	
     function savePosition(position) {
-		//save latitude and longitude in the sessionStorage
-        window.sessionStorage.setItem('position_latitude', position.coords.latitude);
-        window.sessionStorage.setItem('position_longitude', position.coords.longitude);
+		//save latitude and longitude in the localStorage
+        window.localStorage.setItem('position_latitude', position.coords.latitude);
+        window.localStorage.setItem('position_longitude', position.coords.longitude);
     }
 
     function errorHandler(error) {
@@ -38,7 +37,5 @@ define([], function() {
 	}
 	// start the geolocation cycle
 	geolocation();
-	
-	// TODO move the cycling on main.js
 
 });
