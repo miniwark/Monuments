@@ -13,14 +13,16 @@ define([], function() {
 	var baseURL = 'http://open.mapquestapi.com/nominatim/v1/reverse.php?';
 	var params = $.param({
 		format: 'json',
-		lat: window.sessionStorage.getItem('position_latitude'),
-		lon: window.sessionStorage.getItem('position_longitude')
+		lat: window.localStorage.getItem('position_latitude'),
+		lon: window.localStorage.getItem('position_longitude')
 	});
 	var requestURL = baseURL + params + '&json_callback=?'
 
     // get the JSONP data from the external source
-	$.getJSON(requestURL, function(jsonData){
-		var data = JSON.stringify(jsonData);
+	$.getJSON(requestURL, function(jsonData) {
+
+        console.log(jsonData);
+        // TODO take care of {error="Unable to geocode"} error : add a console.log
 		// save the city and contry in the localStorage
 		window.localStorage.setItem('position_country', jsonData.address.country_code);
 		window.localStorage.setItem('position_city', jsonData.address.city);
