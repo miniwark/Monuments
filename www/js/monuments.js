@@ -12,6 +12,7 @@ require.config({
     },
     shim: {
 		handblebars: { exports: 'Handlebars'},
+		txtwiki: { exports: 'txtwiki'},
 		zepto: { exports: '$' }
 	}
 });
@@ -20,6 +21,7 @@ require([
     'app/main',
     'handlebars', 
     'l10n',
+    'txtwiki',
     'zepto'
 ],
 function() {
