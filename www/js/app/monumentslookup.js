@@ -10,7 +10,7 @@
 'use strict';
  
 
-define([], function() {
+define(['txtwiki'], function(txtwiki) {
 
 	// generate the lookup address
 	var baseURL = 'http://toolserver.org/~erfgoed/api/api.php?';
@@ -21,16 +21,23 @@ define([], function() {
 		srlang: navigator.language,
 		coord: window.localStorage.getItem('position_latitude') + ',' + window.localStorage.getItem('position_longitude'),
 		radius: '1000',  //TODO add a setting for this
-		//limit: 10, //TODO maybe add a limit in settings
-		props: 'name|address|municipality|image'
+		//limit: 100, //TODO maybe add a limit in settings defaulted to 100 by toolserver
+		props: 'name|address|municipality|image|monument_article'
 	});
 	var requestURL = baseURL + params + '&callback=?'
 	
     // get the JSONP data from the external source
 	$.getJSON(requestURL, function(jsonData){
-		var monuments_list = JSON.stringify(jsonData);
+		var monuments_list_raw = JSON.stringify(jsonData);
 		// TODO clean wiki formating like [[city]]
 		// or use address from nominatim ?
+
+		// remove the wiki formating
+		var monuments_list = txtwiki.parseWikitext(monuments_list_raw);
+
+		// remove the supplementary adresses
+
+		console.log(monuments_list);
 		
 		// save the monument list in the localStorage
 		window.localStorage.setItem('monuments_list', monuments_list);
