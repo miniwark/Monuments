@@ -20,8 +20,6 @@ define([], function() {
 
     // get the JSONP data from the external source
 	$.getJSON(requestURL, function(jsonData) {
-
-        console.log(jsonData);
         // TODO take care of {error="Unable to geocode"} error : add a console.log
 		// save the city and contry in the localStorage
 		window.localStorage.setItem('position_country', jsonData.address.country_code);

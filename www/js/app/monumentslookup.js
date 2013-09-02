@@ -27,17 +27,22 @@ define(['txtwiki'], function(txtwiki) {
 	var requestURL = baseURL + params + '&callback=?'
 	
     // get the JSONP data from the external source
-	$.getJSON(requestURL, function(jsonData){
-		var monuments_list_raw = JSON.stringify(jsonData);
-		// TODO clean wiki formating like [[city]]
-		// or use address from nominatim ?
+	$.getJSON(requestURL, function(jsonData) {
+
+		// remove the supplementary adresses of monuments
+        $.each(jsonData.monuments, function() {
+	    	var address = this.address;
+	    	var id_br = this.address.indexOf('<br');
+	    	if (id_br != -1) {
+	    		this.address = this.address.slice(0, id_br);
+	    	}
+        });
+
+        //TODO upper for first letter of an adress
 
 		// remove the wiki formating
+		var monuments_list_raw = JSON.stringify(jsonData);
 		var monuments_list = txtwiki.parseWikitext(monuments_list_raw);
-
-		// remove the supplementary adresses
-
-		console.log(monuments_list);
 		
 		// save the monument list in the localStorage
 		window.localStorage.setItem('monuments_list', monuments_list);
