@@ -9,9 +9,3 @@ Coding conventions
 
 * localStorage is used for saving the application settings
 * sessionStorage is used for caching geolocation and results
-
-
-TODO
-
-- Try to convert the internal libraries to the "Revealing Module Pattern"
-- Use Zepto.js with getJSONP for lookups if we add this library to the app
