@@ -1,14 +1,13 @@
 
-// get the city monument list from Wikimedia monument datatbase
-// and strip a few wiki tags
+// get the city monument list from Wikimedia monument datatbase and strip wiki tags
 // https://commons.wikimedia.org/wiki/Commons:Monuments_database/API
 // http://toolserver.org/~erfgoed/api/api.php
+// See query_thumb.js for thumbnailed image
 //
 // Zepto.js is used to get JSONP data from toolserver 
 
+//'use strict';
 
-'use strict';
- 
 
 define(['txtwiki'], function(txtwiki) {
 
@@ -21,7 +20,7 @@ define(['txtwiki'], function(txtwiki) {
 		srlang: navigator.language,
 		coord: window.localStorage.getItem('position_latitude') + ',' + window.localStorage.getItem('position_longitude'),
 		radius: '1000',  //TODO add a setting for this
-		//limit: 100, //TODO maybe add a limit in settings defaulted to 100 by toolserver
+		limit: 50, //TODO maybe add a limit in settings (defaulted to 100 by toolserver)
 		props: 'name|address|municipality|image|monument_article'
 	});
 	var requestURL = baseURL + params + '&callback=?'
@@ -31,14 +30,17 @@ define(['txtwiki'], function(txtwiki) {
 
 		// remove the supplementary adresses of monuments
         $.each(jsonData.monuments, function() {
+			// add image_thumburl property
+
+
+			// remove the supplementary adresses of monuments
 	    	var address = this.address;
 	    	var id_br = this.address.indexOf('<br');
 	    	if (id_br != -1) {
 	    		this.address = this.address.slice(0, id_br);
 	    	}
+	    	//TODO upper the first letter of an address
         });
-
-        //TODO upper for first letter of an adress
 
 		// remove the wiki formating
 		var monuments_list_raw = JSON.stringify(jsonData);
@@ -46,6 +48,9 @@ define(['txtwiki'], function(txtwiki) {
 		
 		// save the monument list in the localStorage
 		window.localStorage.setItem('monuments_list', monuments_list);
+
+        //console.log(window.localStorage.getItem('monuments_list'));
+		
 	})
 
 });
