@@ -1,9 +1,15 @@
 <ul>
 {{#each monuments}}
   <li>
+  {{#if monument_article}}
     <a href="https://fr.wikipedia.org/wiki/{{monument_article}}">
+  {{else}}
+    <a>
+  {{/if}}
       <aside class="pack-end">
-        <img src={{image}}>
+      {{#if image}}
+        <img src={{image_thumb}}>
+      {{/if}}
       </aside>
       <p>{{name}}</p>
       <p>{{address}}</p>
