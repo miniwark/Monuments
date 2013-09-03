@@ -6,8 +6,9 @@
 require([
 	'app/templates',
 	'app/geolocation',
-	'app/addresslookup',
-	'app/monumentslookup',
+	'app/query_address',
+	'app/query_monuments',
+//	'app/query_thumb'
 ],
 function() {
 	//
