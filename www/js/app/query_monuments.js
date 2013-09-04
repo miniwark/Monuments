@@ -4,54 +4,51 @@
 // http://toolserver.org/~erfgoed/api/api.php
 // See query_thumb.js for thumbnailed image
 //
-// Zepto.js is used to get JSONP data from toolserver 
+// Zepto.js is used to get JSONP data from toolserver
 
 //'use strict';
 
 
 define(['txtwiki'], function(txtwiki) {
 
-	// generate the lookup address
-	var baseURL = 'http://toolserver.org/~erfgoed/api/api.php?';
-	var params = $.param({
-		format: 'json',
-		action: 'search',
-		srcontry: window.localStorage.getItem('position_country'),
-		srlang: navigator.language,
-		coord: window.localStorage.getItem('position_latitude') + ',' + window.localStorage.getItem('position_longitude'),
-		radius: '1000',  //TODO add a setting for this
-		limit: 50, //TODO maybe add a limit in settings (defaulted to 100 by toolserver)
-		props: 'name|address|municipality|image|monument_article'
-	});
-	var requestURL = baseURL + params + '&callback=?'
-	
+    // generate the query address
+    var baseURL = 'http://toolserver.org/~erfgoed/api/api.php?';
+    var params = $.param({
+        format: 'json',
+        action: 'search',
+        srcontry: window.localStorage.getItem('position_country'),
+        srlang: navigator.language,
+        coord: window.localStorage.getItem('position_latitude') + ',' + window.localStorage.getItem('position_longitude'),
+        radius: '1000',  //TODO add a setting for this
+        limit: 50, //TODO add a limit in settings
+        props: 'name|address|municipality|image|monument_article'
+    });
+    var requestURL = baseURL + params + '&callback=?'
+
     // get the JSONP data from the external source
-	$.getJSON(requestURL, function(jsonData) {
+    $.getJSON(requestURL, function(jsonData) {
 
-		// remove the supplementary adresses of monuments
+        // add thumburl propertie and clean adresses
         $.each(jsonData.monuments, function() {
-			// add image_thumburl property
+            // add empty thumburl property
+            this.thumburl = '';
 
-
-			// remove the supplementary adresses of monuments
-	    	var address = this.address;
-	    	var id_br = this.address.indexOf('<br');
-	    	if (id_br != -1) {
-	    		this.address = this.address.slice(0, id_br);
-	    	}
-	    	//TODO upper the first letter of an address
+            // remove the supplementary adresses of monuments
+            var address = this.address;
+            var id_br = this.address.indexOf('<br');
+            if (id_br != -1) {
+                this.address = this.address.slice(0, id_br);
+            }
+            //TODO upper the first letter of an address
         });
 
-		// remove the wiki formating
-		var monuments_list_raw = JSON.stringify(jsonData);
-		var monuments_list = txtwiki.parseWikitext(monuments_list_raw);
-		
-		// save the monument list in the localStorage
-		window.localStorage.setItem('monuments_list', monuments_list);
+        // remove the wiki formating
+        var monuments_list_string = JSON.stringify(jsonData);
+        var monuments_list = txtwiki.parseWikitext(monuments_list_string);
 
-        //console.log(window.localStorage.getItem('monuments_list'));
-		
-	})
+        // save the monument list in the localStorage
+        window.localStorage.setItem('monuments_list', monuments_list);
+    })
 
 });
 

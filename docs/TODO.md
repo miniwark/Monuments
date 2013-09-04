@@ -3,8 +3,8 @@ TODO
 
 For v 0.1
 ---------
-- Display images
-- Get image miniatures instead of full images
+- Add a localStorage change event to reload the list ?
+- Debug the image sometime here sometime not (maybe merge query_thumbs & query_monuments ?)
 
 For v 0.2
 ---------

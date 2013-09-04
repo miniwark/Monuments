@@ -4,12 +4,12 @@
 'use strict';
 
 require([
-	'app/templates',
-	'app/geolocation',
-	'app/query_address',
-	'app/query_monuments',
-//	'app/query_thumb'
+    'app/templates',
+    'app/geolocation',
+    'app/query_address',
+    'app/query_monuments',
+    'app/query_thumb'
 ],
 function() {
-	//
+    //
 });
