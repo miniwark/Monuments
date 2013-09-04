@@ -5,6 +5,7 @@ For v 0.1
 ---------
 - Add a localStorage change event to reload the list ?
 - Debug the image sometime here sometime not (maybe merge query_thumbs & query_monuments ?)
+- Check javascritp variable/function/modules names
 
 For v 0.2
 ---------
