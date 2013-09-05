@@ -1,7 +1,8 @@
 
 // main script for the application lauched by /js/monuments.js
 
-'use strict';
+/*global require: false */
+
 
 require([
     'app/templates',
@@ -11,5 +12,6 @@ require([
     'app/query_thumb'
 ],
 function() {
+    'use strict';
     //
 });

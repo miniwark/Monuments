@@ -3,9 +3,12 @@
 // use Wikimedia Commons API
 // http://commons.wikimedia.org/w/api.php
 
-'use strict';
+/*jshint jquery:true */
+/*global define: false */
 
-define([], function() {
+
+define([], function () {
+    'use strict';
 
     function getRequestURL(image) {
         // generate the external source URL
@@ -20,7 +23,7 @@ define([], function() {
         });
         var requestURL = baseURL + params + '&callback=?';
         return requestURL;
-    };
+    }
 
     // get the monuments_list from localStorage
     var monuments_list = JSON.parse(window.localStorage.getItem('monuments_list'));
@@ -28,18 +31,19 @@ define([], function() {
     // get the thumb url for each monument
     $.each(monuments_list.monuments, function(index, monument) {
         if ((monument.image)&&(!monument.thumburl)) { //monument have an image but thumburl is unknown
-            var requestURL = getRequestURL(monument.image)
+            var requestURL = getRequestURL(monument.image);
             // get the JSONP data from the external source
             $.getJSON(requestURL, function(jsonData) {
                 // get the image thumb url and add it to the monument object
                 for (var pageid in jsonData.query.pages) {
-                    // it's a bit tricky here see last comment
-                    var thumburl = jsonData.query.pages[pageid].imageinfo[0].thumburl;
-//                    monument.thumburl = encodeURIComponent(thumburl);
-                    monument.thumburl = thumburl;
-                    // save the localStorage (inside getJSON JSONP it's async)
-                    var monuments_list_string = JSON.stringify(monuments_list);
-                    window.localStorage.setItem('monuments_list', monuments_list_string);
+                    if (jsonData.query.pages.hasOwnProperty(pageid)) { // JSHint ask this
+                        // it's a bit tricky here see last comment
+                        var thumburl = jsonData.query.pages[pageid].imageinfo[0].thumburl;
+                        monument.thumburl = thumburl;
+                        // save the localStorage (inside getJSON JSONP it's async)
+                        var monuments_list_string = JSON.stringify(monuments_list);
+                        window.localStorage.setItem('monuments_list', monuments_list_string);
+                    }
                 }
             });
         }

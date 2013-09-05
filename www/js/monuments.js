@@ -2,7 +2,8 @@
 // configure and load javascripts requirements with RequireJS
 // import external libraries and the main script
 
-'use strict';
+/*global require: false */
+
 
 require.config({
     baseUrl: 'js/lib',
@@ -11,19 +12,20 @@ require.config({
         'templates': '../../templates'
     },
     shim: {
-		handblebars: { exports: 'Handlebars'},
-		txtwiki: { exports: 'txtwiki'},
-		zepto: { exports: '$' }
-	}
+        handblebars: { exports: 'Handlebars'},
+        txtwiki: { exports: 'txtwiki'},
+        zepto: { exports: '$' }
+    }
 });
 
 require([
     'app/main',
-    'handlebars', 
+    'handlebars',
     'l10n',
     'txtwiki',
     'zepto'
 ],
 function() {
-	//
+    'use strict';
+    //
 });

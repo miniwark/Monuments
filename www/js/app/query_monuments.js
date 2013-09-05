@@ -3,13 +3,13 @@
 // https://commons.wikimedia.org/wiki/Commons:Monuments_database/API
 // http://toolserver.org/~erfgoed/api/api.php
 // See query_thumb.js for thumbnailed image
-//
-// Zepto.js is used to get JSONP data from toolserver
 
-//'use strict';
+/*jshint jquery:true */
+/*global define: false */
 
 
 define(['txtwiki'], function(txtwiki) {
+    'use strict';
 
     // generate the query address
     var baseURL = 'http://toolserver.org/~erfgoed/api/api.php?';
@@ -23,7 +23,7 @@ define(['txtwiki'], function(txtwiki) {
         limit: 50, //TODO add a limit in settings
         props: 'name|address|municipality|image|monument_article'
     });
-    var requestURL = baseURL + params + '&callback=?'
+    var requestURL = baseURL + params + '&callback=?';
 
     // get the JSONP data from the external source
     $.getJSON(requestURL, function(jsonData) {
@@ -34,9 +34,8 @@ define(['txtwiki'], function(txtwiki) {
             this.thumburl = '';
 
             // remove the supplementary adresses of monuments
-            var address = this.address;
             var id_br = this.address.indexOf('<br');
-            if (id_br != -1) {
+            if (id_br !== -1) {
                 this.address = this.address.slice(0, id_br);
             }
             //TODO upper the first letter of an address
@@ -48,7 +47,7 @@ define(['txtwiki'], function(txtwiki) {
 
         // save the monument list in the localStorage
         window.localStorage.setItem('monuments_list', monuments_list);
-    })
+    });
 
 });
 
