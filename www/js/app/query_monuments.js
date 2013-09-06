@@ -1,5 +1,5 @@
 
-// get the city monument list from Wikimedia monument datatbase and strip wiki tags
+// get the city monument list from Wikimedia monument database and strip wiki tags
 // https://commons.wikimedia.org/wiki/Commons:Monuments_database/API
 // http://toolserver.org/~erfgoed/api/api.php
 // See query_thumb.js for thumbnailed image
@@ -12,7 +12,7 @@ define(['txtwiki'], function(txtwiki) {
     'use strict';
 
     // generate the query address
-    var baseURL = 'http://toolserver.org/~erfgoed/api/api.php?';
+    var base_url = 'http://toolserver.org/~erfgoed/api/api.php?';
     var params = $.param({
         format: 'json',
         action: 'search',
@@ -23,13 +23,13 @@ define(['txtwiki'], function(txtwiki) {
         limit: 50, //TODO add a limit in settings
         props: 'name|address|municipality|image|monument_article'
     });
-    var requestURL = baseURL + params + '&callback=?';
+    var request_url = base_url + params + '&callback=?';
 
     // get the JSONP data from the external source
-    $.getJSON(requestURL, function(jsonData) {
+    $.getJSON(request_url, function(jsonp) {
 
         // add thumburl propertie and clean adresses
-        $.each(jsonData.monuments, function() {
+        $.each(jsonp.monuments, function() {
             // add empty thumburl property
             this.thumburl = '';
 
@@ -39,14 +39,15 @@ define(['txtwiki'], function(txtwiki) {
                 this.address = this.address.slice(0, id_br);
             }
             //TODO upper the first letter of an address
+
         });
 
         // remove the wiki formating
-        var monuments_list_string = JSON.stringify(jsonData);
-        var monuments_list = txtwiki.parseWikitext(monuments_list_string);
+        var monument_list_string = JSON.stringify(jsonp);
+        var monument_list = txtwiki.parseWikitext(monument_list_string);
 
         // save the monument list in the localStorage
-        window.localStorage.setItem('monuments_list', monuments_list);
+        window.localStorage.setItem('monument_list', monument_list);
     });
 
 });

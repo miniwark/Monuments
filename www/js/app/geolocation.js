@@ -31,6 +31,7 @@ define([], function() {
     // check the geolocation every 5 minutes
     // we use a javascript timer insdead of geolocation.WatchPosition
     // to avoid unecessary battery usage
+    // TODO move this in main.js
 
     function geolocation() {
         // check the geolocation a first time and then every 5 minutes
