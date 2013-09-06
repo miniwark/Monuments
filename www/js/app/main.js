@@ -5,13 +5,16 @@
 
 
 require([
-    'app/templates',
     'app/geolocation',
+    'app/templates',
+
     'app/query_address',
     'app/query_monuments',
     'app/query_thumb'
 ],
-function() {
+function(geolocation, templates) {
     'use strict';
-    //
+
+    geolocation.getPosition();
+    templates.compileTemplates();
 });

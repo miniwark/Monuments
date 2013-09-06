@@ -17,13 +17,13 @@ define([], function() {
         timeout           : 30000
     };
 
-    function savePosition(position) {
+    function _savePosition(position) {
         //save latitude and longitude in the localStorage
         window.localStorage.setItem('position_latitude', position.coords.latitude);
         window.localStorage.setItem('position_longitude', position.coords.longitude);
     }
 
-    function errorHandler(error) {
+    function _errorHandler(error) {
         // TODO manage error messages
         console.log(error.code);
     }
@@ -33,12 +33,16 @@ define([], function() {
     // to avoid unecessary battery usage
     // TODO move this in main.js
 
-    function geolocation() {
+    function _getPosition() {
         // check the geolocation a first time and then every 5 minutes
-        navigator.geolocation.getCurrentPosition(savePosition, errorHandler, geo_options);
-        setTimeout(geolocation, 300000);
+        navigator.geolocation.getCurrentPosition(_savePosition, _errorHandler, geo_options);
+        setTimeout(_getPosition, 300000);
     }
-    // start the geolocation cycle
-    geolocation();
+    //// start the geolocation cycle
+    //geolocation();
 
+
+    return {
+        getPosition : _getPosition
+    };
 });
