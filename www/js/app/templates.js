@@ -26,7 +26,6 @@ define([
         // future templates go here
     }
 
-
     return {
         compileTemplates : _compileTemplates
     };

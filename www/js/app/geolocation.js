@@ -41,7 +41,6 @@ define([], function() {
     //// start the geolocation cycle
     //geolocation();
 
-
     return {
         getPosition : _getPosition
     };

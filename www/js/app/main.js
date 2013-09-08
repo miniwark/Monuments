@@ -7,14 +7,22 @@
 require([
     'app/geolocation',
     'app/templates',
-
-    'app/query_address',
-    'app/query_monuments',
-    'app/query_thumb'
+    'app/address',
+    'app/monument',
+    'app/image'
 ],
-function(geolocation, templates) {
+function(
+    geolocation,
+    templates,
+    address,
+    monument,
+    image
+) {
     'use strict';
 
     geolocation.getPosition();
+    address.getAddress();
+    monument.getMonumentList();
+    image.getThumbnails();
     templates.compileTemplates();
 });

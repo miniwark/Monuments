@@ -5,11 +5,9 @@ For v 0.1
 ---------
 - Add a localStorage change event to reload the list ?
 - Debug the image sometime here sometime not (maybe merge query_thumbs & query_monuments ?)
-- Check javascritp variable/function/modules names
 
 For v 0.2
 ---------
-- Try to convert the internal libraries to the "Revealing Module Pattern"
 - Test between localStorage and sessionStorage for geolocation & monument list
 - Edit the coding_convention according to above
 - Move timers and events trigers in app.js (in particular the 5 minutes geolocation cycle)
