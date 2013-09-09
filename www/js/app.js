@@ -12,20 +12,24 @@ require.config({
         'templates': '../../templates'
     },
     shim: {
-        handblebars: { exports: 'Handlebars'},
-        txtwiki: { exports: 'txtwiki'},
+        deferred: { exports: 'Deferred' },
+        handblebars: { exports: 'Handlebars' },
+        txtwiki: { exports: 'txtwiki' },
         zepto: { exports: '$' }
     }
 });
 
 require([
     'app/main',
+    'deferred',
     'handlebars',
     'l10n',
     'txtwiki',
-    'zepto'
+    'zepto',
 ],
 function() {
     'use strict';
-    //
+
+    // add simply-deferred to Zepto
+    Deferred.installInto($);
 });

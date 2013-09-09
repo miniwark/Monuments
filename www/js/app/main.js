@@ -20,9 +20,9 @@ function(
 ) {
     'use strict';
 
-    geolocation.getPosition();
-    address.getAddress();
-    monument.getMonumentList();
-    image.getThumbnails();
-    templates.compileTemplates();
+    $.when(geolocation.getPosition())
+    .then(address.getAddress())
+    .then(monument.getMonumentList())
+    .then(image.getThumbnails())
+    .then(templates.compileTemplates());
 });
