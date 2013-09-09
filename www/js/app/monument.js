@@ -27,29 +27,30 @@ define(['txtwiki'], function(txtwiki) {
         return base_url + params + '&callback=?';
     }
 
+    function _saveMonumentList(response) {
+        $.each(response.monuments, function() {
+            // add empty thumburl property
+            this.thumburl = '';
+            // remove the supplementary adresses of monuments
+            var id_br = this.address.indexOf('<br');
+            if (id_br !== -1) {
+                this.address = this.address.slice(0, id_br);
+            }
+            //TODO upper the first letter of an address
+            //TODO remove <br> in name
+            //TODO convert Wiki like @@1@@
+        });
+        // remove the wiki formating
+        var monument_list_string = JSON.stringify(response);
+        var monument_list = txtwiki.parseWikitext(monument_list_string);
+        // save the monument list in the localStorage
+        window.localStorage.setItem('monument_list', monument_list);
+    }
+
     function _getMonumentList() {
         // retur the neareaby monuments
         var request_url = _requestUrl();
-        $.getJSON(request_url, function(jsonp) {
-            // add thumburl propertie and clean adresses
-            $.each(jsonp.monuments, function() {
-                // add empty thumburl property
-                this.thumburl = '';
-                // remove the supplementary adresses of monuments
-                var id_br = this.address.indexOf('<br');
-                if (id_br !== -1) {
-                    this.address = this.address.slice(0, id_br);
-                }
-                //TODO upper the first letter of an address
-                //TODO remove <br> in name
-                //TODO convert Wiki like @@1@@
-            });
-            // remove the wiki formating
-            var monument_list_string = JSON.stringify(jsonp);
-            var monument_list = txtwiki.parseWikitext(monument_list_string);
-            // save the monument list in the localStorage
-            window.localStorage.setItem('monument_list', monument_list);
-        });
+        $.getJSON(request_url, _saveMonumentList);
     }
 
     return {

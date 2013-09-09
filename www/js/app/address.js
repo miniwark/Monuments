@@ -22,14 +22,15 @@ define([], function() {
         return base_url + params + '&json_callback=?';
     }
 
+    function _saveAdress(response) {
+        // save the city and country in localStorage
+        window.localStorage.setItem('position_country', response.address.country_code)
+        window.localStorage.setItem('position_city', response.address.city);
+    }
+
     function _getAddress() {
         var request_url = _requestUrl();
-        $.getJSON(request_url, function(jsonp) {
-            // TODO add an errorHandler if {error="Unable to geocode"}
-            // save the city and country in localStorage
-            window.localStorage.setItem('position_country', jsonp.address.country_code);
-            window.localStorage.setItem('position_city', jsonp.address.city);
-        });
+        $.getJSON(request_url, _saveAdress);
     }
 
     return {
