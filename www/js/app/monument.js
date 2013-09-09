@@ -47,10 +47,17 @@ define(['txtwiki'], function(txtwiki) {
         window.localStorage.setItem('monument_list', monument_list);
     }
 
+    function _errorHandler() {
+        // TODO write a better error message
+        console.error('Get Monument List Error');
+    }
+
     function _getMonumentList() {
         // retur the neareaby monuments
         var request_url = _requestUrl();
-        $.getJSON(request_url, _saveMonumentList);
+        $.getJSON(request_url)
+            .done(_saveMonumentList)
+            .fail(_errorHandler);
     }
 
     return {

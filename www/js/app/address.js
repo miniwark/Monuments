@@ -28,9 +28,16 @@ define([], function() {
         window.localStorage.setItem('position_city', response.address.city);
     }
 
+    function _errorHandler() {
+        // TODO write a better error message
+        console.error('Get Address Error');
+    }
+
     function _getAddress() {
         var request_url = _requestUrl();
-        $.getJSON(request_url, _saveAdress);
+        $.getJSON(request_url)
+            .done(_saveAdress)
+            .fail(_errorHandler);
     }
 
     return {
