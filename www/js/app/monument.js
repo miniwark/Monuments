@@ -27,8 +27,8 @@ define(['txtwiki'], function(txtwiki) {
         return base_url + params + '&callback=?';
     }
 
-    function _saveMonumentList(response) {
-        $.each(response.monuments, function() {
+    function _saveMonumentList(data) {
+        $.each(data.monuments, function() {
             // add empty thumburl property
             this.thumburl = '';
             // remove the supplementary adresses of monuments
@@ -41,7 +41,7 @@ define(['txtwiki'], function(txtwiki) {
             //TODO convert Wiki like @@1@@
         });
         // remove the wiki formating
-        var monument_list_string = JSON.stringify(response);
+        var monument_list_string = JSON.stringify(data);
         var monument_list = txtwiki.parseWikitext(monument_list_string);
         // save the monument list in the localStorage
         window.localStorage.setItem('monument_list', monument_list);

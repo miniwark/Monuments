@@ -22,10 +22,10 @@ define([], function() {
         return base_url + params + '&json_callback=?';
     }
 
-    function _saveAdress(response) {
+    function _saveAdress(data) {
         // save the city and country in localStorage
-        window.localStorage.setItem('position_country', response.address.country_code)
-        window.localStorage.setItem('position_city', response.address.city);
+        window.localStorage.setItem('position_country', data.address.country_code)
+        window.localStorage.setItem('position_city', data.address.city);
     }
 
     function _errorHandler() {
