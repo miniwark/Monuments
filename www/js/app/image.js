@@ -25,6 +25,26 @@ define([], function () {
         return request_url;
     }
 
+    function _saveThumbnailUrl(monument_list, monument) {
+        return function(data) {
+            for (var page_id in data.query.pages) {
+                if (data.query.pages.hasOwnProperty(page_id)) { // JSHint ask this check
+                    // it's a bit tricky here see last comment
+                    monument.thumburl = data.query.pages[page_id].imageinfo[0].thumburl;
+                }
+            }
+            // save thumurl in the localStorage
+            // TODO A image display bug is around here
+            var monument_list_string = JSON.stringify(monument_list);
+            window.localStorage.setItem('monument_list', monument_list_string);
+        }
+    }
+
+    function _errorHandler() {
+        // TODO write a better error message
+        console.error('Get Image Thumbnail Error');
+    }
+
     function _getThumbnails() {
         // get the monument_list from localStorage
         var monument_list = JSON.parse(window.localStorage.getItem('monument_list'));
@@ -33,18 +53,9 @@ define([], function () {
             if ((monument.image) && (!monument.thumburl)) { //monument have an image but thumburl is unknown
                 var request_url = _requestUrl(monument.image);
                 // get the JSONP data from the external source
-                $.getJSON(request_url, function(jsonp) {
-                    // get the image thumbnail url and add it to the monument object
-                    for (var page_id in jsonp.query.pages) {
-                        if (jsonp.query.pages.hasOwnProperty(page_id)) { // JSHint ask this
-                            // it's a bit tricky here see last comment
-                            monument.thumburl = jsonp.query.pages[page_id].imageinfo[0].thumburl;
-                            // save the localStorage (inside getJSON JSONP it's async)
-                            var monument_list_string = JSON.stringify(monument_list);
-                            window.localStorage.setItem('monument_list', monument_list_string);
-                        }
-                    }
-                });
+                $.getJSON(request_url)
+                    .done(_saveThumbnailUrl(monument_list, monument))
+                    .fail(_errorHandler);
             }
         });
     }
