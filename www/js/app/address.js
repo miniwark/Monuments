@@ -13,7 +13,7 @@ define([], function() {
 
     function _requestUrl() {
         // generate the external source URL
-        var base_url = 'http://open.mapquestapi.com/nominatim/v1/reverse.php??';
+        var base_url = 'http://open.mapquestapi.com/nominatim/v1/reverse.php?';
         var params = $.param({
             format: 'json',
             lat: window.localStorage.getItem('position_latitude'),
