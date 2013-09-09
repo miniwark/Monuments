@@ -20,9 +20,15 @@ function(
 ) {
     'use strict';
 
-    $.when(geolocation.getPosition())
-    .then(address.getAddress())
-    .then(monument.getMonumentList())
-    .then(image.getThumbnails())
-    .then(templates.compileTemplates());
+    function main() {
+        $.when(geolocation.getPosition())
+        .then(address.getAddress())
+        .then(monument.getMonumentList())
+        .then(image.getThumbnails())
+        .then(templates.compileTemplates());
+        //cycle _main every 5 minutes
+        setTimeout(main, 300000);
+    }
+
+    main()
 });

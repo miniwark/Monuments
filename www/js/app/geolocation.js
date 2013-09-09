@@ -25,21 +25,16 @@ define([], function() {
 
     function _errorHandler(error) {
         // TODO manage error messages
-        console.log(error.code);
+        console.error(error.code);
     }
 
-    // check the geolocation every 5 minutes
-    // we use a javascript timer insdead of geolocation.WatchPosition
+    // we avoid to use geolocation.WatchPosition
     // to avoid unecessary battery usage
-    // TODO move this in main.js
 
     function _getPosition() {
-        // check the geolocation a first time and then every 5 minutes
+        // check the geolocation
         navigator.geolocation.getCurrentPosition(_savePosition, _errorHandler, geo_options);
-        setTimeout(_getPosition, 300000);
     }
-    //// start the geolocation cycle
-    //geolocation();
 
     return {
         getPosition : _getPosition

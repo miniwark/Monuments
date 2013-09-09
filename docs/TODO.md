@@ -10,8 +10,8 @@ For v 0.2
 ---------
 - Test between localStorage and sessionStorage for geolocation & monument list
 - Edit the coding_convention according to above
-- Move timers and events trigers in app.js (in particular the 5 minutes geolocation cycle)
-- Manage geolocation error messages
+- Move events trigers in app.js
+- Manage error messages
 - Finish the settings panel
 - Add settings for radius and list limit
 - Remove unecessary building blocks (like unused icons)
