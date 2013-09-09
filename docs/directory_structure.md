@@ -11,7 +11,8 @@ with a few variations because of Handlebars templates and RequireJS usage.
       js/               -- javascript libraries
         lib/            -- external javascript libraries
         app/            -- internal javascript libraries
-      monuments.js      -- main javascript library (require.js loader)
+          main.js       -- main javascript application
+      app.js            -- javascript library loader (require.js loader)
       locales/          -- localisation messages (webL10n)
       style/            -- CSS & design files
         bb/             -- FirefoxOS building blocks
