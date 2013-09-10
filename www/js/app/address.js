@@ -16,16 +16,16 @@ define([], function() {
         var base_url = 'http://open.mapquestapi.com/nominatim/v1/reverse.php?';
         var params = $.param({
             format: 'json',
-            lat: window.localStorage.getItem('position_latitude'),
-            lon: window.localStorage.getItem('position_longitude')
+            lat: window.sessionStorage.getItem('position_latitude'),
+            lon: window.sessionStorage.getItem('position_longitude')
         });
         return base_url + params + '&json_callback=?';
     }
 
     function _saveAdress(data) {
-        // save the city and country in localStorage
-        window.localStorage.setItem('position_country', data.address.country_code)
-        window.localStorage.setItem('position_city', data.address.city);
+        // save the city and country in sessionStorage
+        window.sessionStorage.setItem('position_country', data.address.country_code)
+        window.sessionStorage.setItem('position_city', data.address.city);
     }
 
     function _errorHandler() {

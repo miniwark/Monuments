@@ -3,17 +3,16 @@ TODO
 
 For v 0.1
 ---------
-- Add a localStorage change event to reload the list ?
+- Add a sessionStorage change event to reload the templates ?
 - Debug the image sometime here sometime not (maybe merge query_thumbs & query_monuments ?)
 
 For v 0.2
 ---------
-- Test between localStorage and sessionStorage for geolocation & monument list
 - Edit the coding_convention according to above
 - Move events trigers in app.js
 - Manage error messages
 - Finish the settings panel
-- Add settings for radius and list limit
+- Add settings for radius and list limit in localStorage
 - Remove unecessary building blocks (like unused icons)
 
 

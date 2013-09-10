@@ -1,6 +1,5 @@
 
-// use the HTML5 geolocation API to retrieve actual coordinates
-// every 5 minutes and save them in the sessionStorage
+// use the HTML5 geolocation API to retrieve actual coordinates and save them in the sessionStorage
 //
 // We use setTimeout instead of geolocation.WatchPosition to avoid unecessary battery usage
 
@@ -18,9 +17,9 @@ define([], function() {
     };
 
     function _savePosition(position) {
-        //save latitude and longitude in the localStorage
-        window.localStorage.setItem('position_latitude', position.coords.latitude);
-        window.localStorage.setItem('position_longitude', position.coords.longitude);
+        //save latitude and longitude in the sessionStorage
+        window.sessionStorage.setItem('position_latitude', position.coords.latitude);
+        window.sessionStorage.setItem('position_longitude', position.coords.longitude);
     }
 
     function _errorHandler(error) {

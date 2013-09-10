@@ -17,9 +17,9 @@ define(['txtwiki'], function(txtwiki) {
         var params = $.param({
             format: 'json',
             action: 'search',
-            srcontry: window.localStorage.getItem('position_country'),
+            srcontry: window.sessionStorage.getItem('position_country'),
             srlang: navigator.language,
-            coord: window.localStorage.getItem('position_latitude') + ',' + window.localStorage.getItem('position_longitude'),
+            coord: window.sessionStorage.getItem('position_latitude') + ',' + window.sessionStorage.getItem('position_longitude'),
             radius: '1000',  //TODO add a setting for this
             limit: 50, //TODO add a limit in settings
             props: 'name|address|municipality|image|monument_article'
@@ -43,8 +43,8 @@ define(['txtwiki'], function(txtwiki) {
         // remove the wiki formating
         var monument_list_string = JSON.stringify(data);
         var monument_list = txtwiki.parseWikitext(monument_list_string);
-        // save the monument list in the localStorage
-        window.localStorage.setItem('monument_list', monument_list);
+        // save the monument list in the sessionStorage
+        window.sessionStorage.setItem('monument_list', monument_list);
     }
 
     function _errorHandler() {

@@ -11,8 +11,8 @@ define([
 
     // compile the monument list template
     function _compileMonumentList() {
-        // get the monuments_list from localStorage
-        var monument_list = JSON.parse(window.localStorage.getItem('monument_list'));
+        // get the monuments_list from sessionStorage
+        var monument_list = JSON.parse(window.sessionStorage.getItem('monument_list'));
         // compile monument list template
         var compiledMonumentListTemplate = Handlebars.compile(monument_list_template);
         // add the generated HTML to document

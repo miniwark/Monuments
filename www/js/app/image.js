@@ -33,10 +33,10 @@ define([], function () {
                     monument.thumburl = data.query.pages[page_id].imageinfo[0].thumburl;
                 }
             }
-            // save thumurl in the localStorage
+            // save thumurl in the sessionStorage
             // TODO A image display bug is around here
             var monument_list_string = JSON.stringify(monument_list);
-            window.localStorage.setItem('monument_list', monument_list_string);
+            window.sessionStorage.setItem('monument_list', monument_list_string);
         }
     }
 
@@ -46,8 +46,8 @@ define([], function () {
     }
 
     function _getThumbnails() {
-        // get the monument_list from localStorage
-        var monument_list = JSON.parse(window.localStorage.getItem('monument_list'));
+        // get the monument_list from sessionStorage
+        var monument_list = JSON.parse(window.sessionStorage.getItem('monument_list'));
         // get the thumb url for each monument
         $.each(monument_list.monuments, function(index, monument) {
             if ((monument.image) && (!monument.thumburl)) { //monument have an image but thumburl is unknown
