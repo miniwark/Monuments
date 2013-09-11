@@ -29,8 +29,6 @@ define(['txtwiki'], function(txtwiki) {
 
     function _saveMonumentList(data) {
         $.each(data.monuments, function() {
-            // add empty thumburl property
-            this.thumburl = '';
             // remove the supplementary adresses of monuments
             var id_br = this.address.indexOf('<br');
             if (id_br !== -1) {
