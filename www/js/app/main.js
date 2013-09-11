@@ -21,11 +21,11 @@ function(
     'use strict';
 
     function main() {
-        $.when(geolocation.getPosition())
-        .then(address.getAddress())
-        .then(monument.getMonumentList())
-        .then(image.getThumbnails())
-        .then(templates.compileTemplates());
+        geolocation.getPosition();
+        address.getAddress();
+        monument.getMonumentList();
+        image.getThumbnails();
+        templates.compileTemplates();
         //cycle _main every 5 minutes
         setTimeout(main, 300000);
     }
